@@ -18,10 +18,6 @@ const NotesComponent = () => {
     }
   };
 
-  const handleEditNote = (note) => {
-    setEditingNote(note);
-    setIsEditorOpen(true);
-  };
 
   const handleSaveDrawing = (imageData) => {
     addNote("Drawing Note", imageData, "drawing", "violet");
@@ -42,7 +38,7 @@ const NotesComponent = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="">
         <NoteCard />
       </div>
 

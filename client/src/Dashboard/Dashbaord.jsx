@@ -1,14 +1,18 @@
 import Sidebar from './components/Sidebar'
 import React from 'react'
 import NotesComponent from './components/NotesComponent'
-import TaskManagement from './components/TaskManagement'
+import Header from './components/Header'
 
 const Dashbaord = () => {
   return (
     <main className=' flex'>
-      <Sidebar />
-      <NotesComponent />
-      <TaskManagement />
+      <div>
+        <Sidebar />
+      </div>
+      <div className='w-full'>
+        <Header />
+        <NotesComponent />
+      </div>
     </main>
   )
 }

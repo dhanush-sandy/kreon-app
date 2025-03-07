@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const LandingHeader = () => {
   const { isSignedIn } = useAuth();
-  console.log(isSignedIn);
+
 
   return (
     <nav className="container mx-auto max-w-7xl py-4">
@@ -50,9 +50,9 @@ const LandingHeader = () => {
         <div className="flex items-center space-x-4">
           {isSignedIn ? (
             <div className="flex items-center justify-center gap-2">
-              <Link to="/dashbaord">
+              <Link to="/dashboard">
                 <button className="bg-orange-400 px-4 py-2 text-sm rounded-md font-medium text text-neutral-100 hover:bg-orange-400/90 transition-colors cursor-pointer">
-                  Dashbaord
+                  Dashboard
                 </button>
               </Link>
               <div className="hover:text-neutral-900 transition-colors px-4 py-2 cursor-pointer">
