@@ -83,7 +83,6 @@ const NoteCard = () => {
     }
   };
 
-  // Function to get appropriate text color based on background
   const getTextColorClass = (bgColor) => {
     const darkColors = ['red', 'blue', 'black', 'purple', 'green', 'gray', 'indigo'];
     const colorBase = bgColor.split('-')[0];
@@ -94,7 +93,6 @@ const NoteCard = () => {
     return 'text-neutral-700';
   };
 
-  // Function to truncate text with ellipsis
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
   };

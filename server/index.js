@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ CORS Configuration
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "http://localhost:5174",
   credentials: true, // ✅ Fix typo: `credential` → `credentials`
 };
 app.use(cors(corsOptions));

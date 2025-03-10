@@ -93,6 +93,12 @@ const ReminderNote = ({ onClose, onSave, initialData = null }) => {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Escape") {
+            onClose();
+        }
+    };
+
     const getTextColorClass = (bgColor) => {
         const darkColors = ['red', 'blue', 'black', 'purple', 'green', 'gray', 'indigo'];
         const colorBase = bgColor.split('-')[0];
@@ -104,8 +110,14 @@ const ReminderNote = ({ onClose, onSave, initialData = null }) => {
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className={`p-6 ${color && color.startsWith('bg-') ? color : `bg-${color}`}`}>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            onClick={onClose}
+        >
+            <div
+                className={`bg-white rounded-xl w-full max-w-2xl max-h-[90vh] overflow-auto shadow-2xl transition-all duration-300 ease-in-out p-6 ${color && color.startsWith('bg-') ? color : `bg-${color}`}`}
+                onClick={(e) => e.stopPropagation()}
+                onKeyDown={handleKeyDown}
+            >
                 <div className="flex justify-between items-center mb-4">
                     <div className="flex items-center gap-2">
                         <Bell size={20} className={getTextColorClass(color)} />
@@ -182,8 +194,8 @@ const ReminderNote = ({ onClose, onSave, initialData = null }) => {
                                     key={c}
                                     onClick={() => setColor(c)}
                                     className={`w-8 h-8 rounded-full cursor-pointer bg-${c} transition-all duration-200 ${color === c
-                                            ? 'ring-2 ring-offset-2 ring-blue-500 transform scale-110'
-                                            : 'hover:scale-105'
+                                        ? 'ring-2 ring-offset-2 ring-blue-500 transform scale-110'
+                                        : 'hover:scale-105'
                                         }`}
                                 />
                             ))}
@@ -203,30 +215,31 @@ const ReminderNote = ({ onClose, onSave, initialData = null }) => {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="p-4 border-t flex justify-end gap-2">
-                <button
-                    onClick={onClose}
-                    className="px-4 py-2 border rounded-lg hover:bg-gray-50"
-                >
-                    Cancel
-                </button>
-                <button
-                    onClick={saveReminder}
-                    disabled={loading || !title.trim() || !description.trim()}
-                    className={`px-4 py-2 rounded-lg flex items-center gap-1 ${loading || !title.trim() || !description.trim()
+
+                <div className="p-4 border-t flex justify-end gap-2">
+                    <button
+                        onClick={onClose}
+                        className="px-4 py-2 border rounded-lg hover:bg-gray-50"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={saveReminder}
+                        disabled={loading || !title.trim() || !description.trim()}
+                        className={`px-4 py-2 rounded-lg flex items-center gap-1 ${loading || !title.trim() || !description.trim()
                             ? 'bg-blue-300 cursor-not-allowed'
                             : 'bg-blue-500 hover:bg-blue-600'
-                        } text-white`}
-                >
-                    {loading ? (
-                        <Loader2Icon size={16} className="animate-spin" />
-                    ) : (
-                        <CheckCircle size={16} />
-                    )}
-                    Set Reminder
-                </button>
+                            } text-white`}
+                    >
+                        {loading ? (
+                            <Loader2Icon size={16} className="animate-spin" />
+                        ) : (
+                            <CheckCircle size={16} />
+                        )}
+                        Set Reminder
+                    </button>
+                </div>
             </div>
         </div>
     );

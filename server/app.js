@@ -10,13 +10,6 @@ const app = express();
 app.use(cookieParser())
 app.use(express.json());
 
-const corsOption = {
-    origin: "http://localhost:5173",
-    credential: true
-}
-
-app.use(cors(corsOption));
-
 app.use(bodyParser.json({
     limit: '10mb'
 }))
